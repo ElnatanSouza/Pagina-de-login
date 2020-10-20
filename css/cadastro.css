@@ -33,6 +33,7 @@ main {
 }
 
 .card button {
+    cursor: pointer;
     display: block;
     background-color: #53c794;
     width: 80%;
