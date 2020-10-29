@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
     <title>Entre ou Cadastre-se</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/login.css" />
 </head>
@@ -18,12 +19,14 @@
 
                 <h1>Entre ou cadastre-se</h1>
 
-                <form action="#">
-                    <input type="email" placeholder="E-mail" />
-                    <input type="password" placeholder="Senha" />
-                    <button>Entrar</button>
+                <form action="login_usuario.php" method="post">
+
+                    <input type="email" name="email" placeholder="E-mail" />
+                    <input type="password" name="senha" placeholder="Senha" />
+                    <button type="submit"> Entrar </button>
+                    <a href="./cadastro.php">Ainda não possui cadastro? clique aqui.</a>
+
                 </form>
-                <a href="./cadastro.html">Ainda não possui cadastro? clique aqui.</a>
 
             </div>
 
