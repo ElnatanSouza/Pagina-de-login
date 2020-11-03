@@ -14,12 +14,12 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
     $result = $conn->query($sql);
 
     //$usuarios recebe a lista de usuarios
-    $usuarios = mysqli_fetch_all($result);
+    $usuarios = mysqli_fetch_assoc($result);
 
-    $_SESSION['nome'] = $usuarios[0][1];
-    $_SESSION['imagem'] = $usuarios[0][2];
-    $_SESSION['email'] = $usuarios[0][3];
-    $_SESSION['senha'] = $usuarios[0][4];
+    $_SESSION['nome'] = $usuarios["nome"];
+    $_SESSION['imagem'] = $usuarios["imagem"];
+    $_SESSION['email'] = $usuarios["email"];
+    $_SESSION['id'] = $usuarios["id"];
 
     header('Location: home.php');
 

@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="./css/home.css" />
 
-    <title>Home</title>
+    <title>Meu Perfil</title>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="perfil.php"> Meu perfil </a>
+                        <a class="dropdown-item" href="#"> Meu perfil </a>
                         <a class="dropdown-item" href="sair.php"> Sair </a>
                     </div>
 
@@ -67,32 +67,47 @@
 
     <main class="container">
 
-        <form class="form-row mt-5" action="cadastro_postagens.php" method="post">
-            <input class="col-9 form-control" type="text" name="post"
-                placeholder="No que você está pensando, <?php echo $_SESSION['nome'];?>?">
-            <button type="submit" class="col-3 btn text-white"> Publicar </button>
-        </form>
-        <?php
-            if($postagens->num_rows > 0){
+        <section class="row pt-5">
 
-            foreach ($postagens as $postagem) {
+            <div class="col-lg-4">
 
-?>
-        <div class="card mt-5">
-            <div class="card-header">
-                <img class="rounded-circle" src="<?php echo $postagem["imagem"];?>"
-                    alt="<?php echo $postagem['nome'];?>">
-                <h5 class="ml-3 mb-0"> <?php echo $postagem['nome'];?> </h5>
+                <img class="rounded-circle" style="height: 300px; width: 300px" src="<?php echo $_SESSION['imagem'];?>">
+
             </div>
 
-            <div class="card-body">
-                <?php echo $postagem["conteudo"] ?>
-            </div>
-        </div>
+            <div class="col-ld-8">
+                <h1><?php echo $_SESSION["nome"] ?> </h1>
+                <p><?php echo $_SESSION["email"]?> </p>
 
-        <?php }} ?>
+            </div>
+
+        </section>
+
+        <section class="mt-5 border">
+
+            <div class="alert alert-danger" role="alert">
+                Cuidado! Ao remover a conta, não poderá recupera-la
+            </div>
+
+            <button class="btn btn-danger" onclick="confirmar()">Remover conta</button>
+
+        </section>
+
 
     </main>
+
+
+
+    <script>
+    function confirmar() {
+        let confirmacao = confirm("Você realmente deseja EXCLUIR essa conta?")
+
+        if (confirmacao == true) {
+
+            location.href = "remover_conta.php?id=" + <?php echo $_SESSION['id']?>
+        }
+    }
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
